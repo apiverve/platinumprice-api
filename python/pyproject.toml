@@ -1,0 +1,29 @@
+[project]
+name = "apiverve-platinumprice"
+version = "1.2.2"
+authors = [
+  { name="APIVerve", email="hello@apiverve.com" },
+]
+description = "Platinum Price retrieves real-time spot rates for platinum per troy ounce, gram, and kilogram. Each response reports prices in USD, 24-hour net price changes, direction markers, and update timestamps, with paid plans supporting 172 currencies."
+keywords = ["platinum price", "platinum price api", "platinum price tool", "platinum price data", "platinum price feed"]
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = [
+    "requests>=2.25.0"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Natural Language :: English",
+]
+
+[project.urls]
+Homepage = "https://apiverve.com/marketplace/platinumprice?utm_source=pypi&utm_medium=referral&utm_content=homepage"
+Documentation = "https://docs.apiverve.com/ref/platinumprice?utm_source=pypi&utm_medium=referral&utm_content=docs"
+Repository = "https://github.com/apiverve/platinumprice-api"
+Twitter = "https://twitter.com/apivervehq"
