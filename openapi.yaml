@@ -1,0 +1,93 @@
+openapi: 3.0.4
+info:
+  title: Platinum Price
+  description: >-
+    Platinum Price retrieves real-time spot rates for platinum per troy ounce,
+    gram, and kilogram. Each response reports prices in USD, 24-hour net price
+    changes, direction markers, and update timestamps, with paid plans
+    supporting 172 currencies.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.0
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+  - url: https://api.apiverve.com/
+paths:
+  /v1/platinumprice:
+    get:
+      summary: Platinum Price
+      description: >-
+        Get the current price of platinum. You can optionally specify a currency
+        (defaults to USD).
+      operationId: platinumprice
+      parameters:
+        - name: currency
+          in: query
+          schema:
+            type: string
+          required: false
+          description: The currency to get the price in
+          example: USD
+        - name: hourly
+          in: query
+          schema:
+            type: boolean
+          required: false
+          description: Include hourly price data for the past 24 hours
+          example: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: object
+                    description: data
+              example:
+                status: ok
+                error: null
+                data:
+                  currency: USD
+                  gram: 51.62
+                  kilogram: 51617.99
+                  ounce: 1605.5
+                  lastUpdated: '2026-02-07T12:00:00.000Z'
+                  change24h: 12.3
+                  change24hPct: 0.77
+                  changeDirection: up
+                  high24h: 1618
+                  low24h: 1592.4
+                  formatted:
+                    ounce: $1,605.50
+                    gram: $51.62
+                    kilogram: $51,617.99
+                    ounceWords: one thousand, six hundred six dollars
+                    kilogramWords: fifty-one thousand, six hundred eighteen dollars
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occurred, try again later
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+  - api_key: []
